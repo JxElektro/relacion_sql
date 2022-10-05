@@ -41,4 +41,6 @@ alter table stock add column name varchar (50)
 /* Dumb Update           */
 update stock set name = (select name from item where item.id = stock.item_id)
 
-
+select * from item i
+join stock s on s.name = i.name
+where s."name" = 'Cocacola';

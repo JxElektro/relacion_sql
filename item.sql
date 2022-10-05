@@ -25,7 +25,6 @@ create table stock (
   FOREIGN KEY (item_id) REFERENCES item(id)
 );
 
-
 insert into stock (item_id, quantity) values
 (1, 10),
 (2, 10),
@@ -37,5 +36,9 @@ insert into stock (item_id, quantity) values
 (8, 10),
 (9, 10)
 
+alter table stock add column name varchar (50)
 
-select * from stock
+/* Dumb Update           */
+update stock set name = (select name from item where item.id = stock.item_id)
+
+
